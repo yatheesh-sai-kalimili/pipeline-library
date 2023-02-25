@@ -3,7 +3,8 @@ def call (body) {
    def args = [
        branch: '',
        url: '',
-       service: ''
+       service: '',
+       buildType: ''
   ]
 
 body.resolveStrategy = Closure.DELEGATE_FIRST
@@ -28,6 +29,9 @@ pipeline {
               }
         }
        stage ('Build') {
+        when{
+             equals(actual: args.buildType, expected: "Java build")
+        }
         steps {
             sh 'export MAVEN_HOME=/opt/maven'
             sh 'export PATH=$PATH:$MAVEN_HOME/bin'
