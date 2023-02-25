@@ -14,6 +14,9 @@ echo "INFO: ${args.branch}"
 
 pipeline {
    agent any
+   tools {
+        maven 'maven'
+    }
    stages {
       stage('Git Checkout') {
         steps {
