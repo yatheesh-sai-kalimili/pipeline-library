@@ -37,5 +37,11 @@ pipeline {
         }
         }
     }
+     post {
+        always {
+           junit '**/target/surefire-reports/TEST-*.xml'
+            archiveArtifacts 'target/*.jar'
+        }
+    }
 }
 }
